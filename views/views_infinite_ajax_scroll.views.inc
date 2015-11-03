@@ -16,7 +16,7 @@ function views_infinite_ajax_scroll_views_plugins() {
         'title' => t('Infinite Ajax Scroll'),
         'help' => t('views_infinite_ajax_scroll'),
         'help topic' => '',
-        'handler' => 'views_plugin_pager_infinite_ajax_scroll',
+        'handler' => 'views_plugin_pager_ias',
         'uses options' => TRUE,
         'parent' => 'full',
       ),
