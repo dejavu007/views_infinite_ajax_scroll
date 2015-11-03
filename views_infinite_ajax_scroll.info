@@ -1,0 +1,5 @@
+name = Views Infinite Ajax Scroll
+description = To integrate Infinite Ajax Scroll Plugin
+core = 7.x
+package = Views
+dependencies[] = views
