@@ -6,13 +6,13 @@
 (function ($) {
   Drupal.behaviors.views_ias = {
     attach: function (context, settings) {
-	  var iasViewsId = Drupal.settings.view_infinite_ajax_scroll.id;
-	  var iasContainer = iasViewsId + ' ' + Drupal.settings.view_infinite_ajax_scroll.container;
-	  var iasItem = iasViewsId + ' ' + Drupal.settings.view_infinite_ajax_scroll.item;
-	  var iasPagination = iasViewsId + ' ' + Drupal.settings.view_infinite_ajax_scroll.pagination;
-	  var iasNext = iasViewsId + ' ' + Drupal.settings.view_infinite_ajax_scroll.next;
-	  var iasdelay = Drupal.settings.view_infinite_ajax_scroll.delay; // default 500
-	  var iasNegMargin = Drupal.settings.view_infinite_ajax_scroll.negativeMargin; // default 300
+	  var iasViewsId = Drupal.settings.viewsInfiniteAjaxScroll.id;
+	  var iasContainer = iasViewsId + ' ' + Drupal.settings.viewsInfiniteAjaxScroll.container;
+	  var iasItem = Drupal.settings.viewsInfiniteAjaxScroll.item;
+	  var iasPagination = iasViewsId + ' ' + Drupal.settings.viewsInfiniteAjaxScroll.pagination;
+	  var iasNext = iasViewsId + ' ' + Drupal.settings.viewsInfiniteAjaxScroll.next;
+	  var iasdelay = Drupal.settings.viewsInfiniteAjaxScroll.delay; // default 500
+	  var iasNegMargin = Drupal.settings.viewsInfiniteAjaxScroll.negativeMargin; // default 300
 
       var ias = $.ias({
         container:      iasContainer,

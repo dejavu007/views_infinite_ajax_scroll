@@ -99,10 +99,10 @@ function views_infinite_ajax_scroll_views_pre_render(&$view) {
 	  'delay' => $view->query->pager->options['delay'],
 	  'negativeMargin' => $view->query->pager->options['negmargin'],
 	);
-	drupal_set_message('<pre>'.print_r($ias_settings, TRUE).'</pre>');
-	drupal_add_js(array('view_infinite_ajax_scroll' => $ias_settings), 'setting');
+
+	drupal_add_js(array('viewsInfiniteAjaxScroll' => $ias_settings), 'setting');
 	
-	drupal_add_js(libraries_get_path('infinite-ajax-scroll') . '/' . '/jquery-ias.min.js');
+	drupal_add_js(libraries_get_path('infinite-ajax-scroll') . '/jquery-ias.min.js');
     drupal_add_js(drupal_get_path('module', 'views_infinite_ajax_scroll') . '/js/views_infinite_ajax_scroll.js');
   }
 }

@@ -85,4 +85,19 @@ class views_plugin_pager_ias extends views_plugin_pager_mini {
     );
   }
 
+  /**
+   * render overwrite.
+   */
+  function render($input) {
+
+    $pager_theme = views_theme_functions('views_infinite_ajax_scroll', $this->view, $this->display);
+
+    $vars = array(
+      'parameters' => $input,
+      'element' => $this->options['id'],
+    );
+
+    return theme($pager_theme, $vars);
+  }
+
 }
