@@ -17,7 +17,7 @@ function views_infinite_ajax_scroll_theme() {
   return array(
     'views_infinite_ajax_scroll' => array(
       'variables' => array('tags' => array(), 'quantity' => 10, 'element' => 0, 'parameters' => array()),
-      'pattern' => 'views_ias_pager__',
+      'pattern' => 'views_infinite_ajax_scroll_pager__',
     ),
   );
 }
@@ -64,6 +64,20 @@ function theme_views_infinite_ajax_scroll($vars) {
   }
 }
 
+
+/**
+ * Check for the library and return the appropriate scope.
+ */
+function views_infinite_ajax_scroll_check_library() {
+  // @TODO: Cache the result.
+  if (function_exists('libraries_get_path') && file_exists(libraries_get_path('infinite-ajax-scroll') . '/jquery-ias.min.js') === TRUE) {
+    // Library has been installed correctly, so use it.
+    return TRUE;
+  }
+
+  return FALSE;
+}
+
 /**
  * Implements hook_views_pre_render().
  *
@@ -73,8 +87,23 @@ function views_infinite_ajax_scroll_views_pre_render(&$view) {
   if ($view->use_ajax) {
     return;
   }
-  if (isset($view->query->pager->plugin_name) && $view->query->pager->plugin_name == 'ias') {
+
+  $ias_library = views_infinite_ajax_scroll_check_library(); // Check for ias library.
+  if (isset($view->query->pager->plugin_name) && $view->query->pager->plugin_name == 'ias' && $ias_library) {
+	dpm($view->query->pager->options);
+	// Set values initiating ias
+	$ias_settings = array(
+	  'id' => '.view-id-clone_of_code_snippets',
+	  'container' => '.views-content',
+	  'item' => '.views-row',
+	  'pagination' => 'ul.pager-ias',
+	  'next' => 'li.pager-next a',
+	  'delay' => 500,
+	  'negativeMargin' => 300,
+	); 
+	drupal_add_js(array('view_infinite_ajax_scroll' => $ias_settings), 'setting');
 	
+	drupal_add_js(libraries_get_path('infinite-ajax-scroll') . '/' . '/jquery-ias.min.js');
     drupal_add_js(drupal_get_path('module', 'views_infinite_ajax_scroll') . '/js/views_infinite_ajax_scroll.js');
   }
 }

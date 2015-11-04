@@ -6,13 +6,13 @@
 (function ($) {
   Drupal.behaviors.views_ias = {
     attach: function (context, settings) {
-	  var iasViewsId = Drupal.settings.viewIas.id;
-	  var iasContainer = iasViewsId + ' ' + Drupal.settings.viewIas.container;
-	  var iasItem = iasViewsId + ' ' + Drupal.settings.viewIas.item;
-	  var iasPagination = iasViewsId + ' ' + Drupal.settings.viewIas.pagination;
-	  var iasNext = iasViewsId + ' ' + Drupal.settings.viewIas.next;
-	  var iasdelay = Drupal.settings.viewIas.delay; // default 500
-	  var iasNegMargin = Drupal.settings.viewIas.negativeMargin; // default 300
+	  var iasViewsId = Drupal.settings.view_infinite_ajax_scroll.id;
+	  var iasContainer = iasViewsId + ' ' + Drupal.settings.view_infinite_ajax_scroll.container;
+	  var iasItem = iasViewsId + ' ' + Drupal.settings.view_infinite_ajax_scroll.item;
+	  var iasPagination = iasViewsId + ' ' + Drupal.settings.view_infinite_ajax_scroll.pagination;
+	  var iasNext = iasViewsId + ' ' + Drupal.settings.view_infinite_ajax_scroll.next;
+	  var iasdelay = Drupal.settings.view_infinite_ajax_scroll.delay; // default 500
+	  var iasNegMargin = Drupal.settings.view_infinite_ajax_scroll.negativeMargin; // default 300
 
       var ias = $.ias({
         container:      iasContainer,
