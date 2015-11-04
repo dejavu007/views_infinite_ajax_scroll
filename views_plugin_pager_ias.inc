@@ -16,10 +16,10 @@ class views_plugin_pager_ias extends views_plugin_pager_mini {
     $options = parent::option_definition();
     $options['classes'] = array(
       'contains' => array(
-        'container' => '.view-content',
-        'item' => '.views-row',
-        'pagination' => 'ul.pager',
-        'next' => 'li.pager-next a',
+        'container' => array('default' => '.view-content'),
+        'item' => array('default' => '.views-row'),
+        'pagination' => array('default' => 'ul.pager'),
+        'next' => array('default' => 'li.pager-next a'),
       ),
     );
     $options['delay'] = array(
@@ -69,6 +69,19 @@ class views_plugin_pager_ias extends views_plugin_pager_mini {
 	  '#title' => t('Next link'),
 	  '#description' => t('Selector class for the next link.'),
 	  '#default_value' => $this->options['classes']['next'],
+    );
+
+	$form['delay'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Delay'),
+      '#description' => t('Delay in appending new content.'),
+      '#default_value' => $this->options['delay'],
+    );
+	$form['negmargin'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Negative Margin'),
+      '#description' => t('Negative margin in pixels.'),
+      '#default_value' => $this->options['negmargin'],
     );
   }
 

@@ -6,7 +6,6 @@
 function views_infinite_ajax_scroll_views_api() {
   return array(
     'api' => 3,
-	'path' => drupal_get_path('modules', 'views_infinite_ajax_scroll') . '/views';
   );
 }
 
@@ -90,17 +89,17 @@ function views_infinite_ajax_scroll_views_pre_render(&$view) {
 
   $ias_library = views_infinite_ajax_scroll_check_library(); // Check for ias library.
   if (isset($view->query->pager->plugin_name) && $view->query->pager->plugin_name == 'ias' && $ias_library) {
-	dpm($view->query->pager->options);
 	// Set values initiating ias
 	$ias_settings = array(
-	  'id' => '.view-id-clone_of_code_snippets',
-	  'container' => '.views-content',
-	  'item' => '.views-row',
-	  'pagination' => 'ul.pager-ias',
-	  'next' => 'li.pager-next a',
-	  'delay' => 500,
-	  'negativeMargin' => 300,
-	); 
+	  'id' => '.view-id-' . $view->name,
+	  'container' => $view->query->pager->options['classes']['container'],
+	  'item' => $view->query->pager->options['classes']['item'],
+	  'pagination' => $view->query->pager->options['classes']['pagination'],
+	  'next' => $view->query->pager->options['classes']['next'],
+	  'delay' => $view->query->pager->options['delay'],
+	  'negativeMargin' => $view->query->pager->options['negmargin'],
+	);
+	drupal_set_message('<pre>'.print_r($ias_settings, TRUE).'</pre>');
 	drupal_add_js(array('view_infinite_ajax_scroll' => $ias_settings), 'setting');
 	
 	drupal_add_js(libraries_get_path('infinite-ajax-scroll') . '/' . '/jquery-ias.min.js');

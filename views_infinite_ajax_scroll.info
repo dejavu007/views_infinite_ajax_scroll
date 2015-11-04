@@ -3,3 +3,5 @@ description = To integrate Infinite Ajax Scroll Plugin
 core = 7.x
 package = Views
 dependencies[] = views
+files[] = views_infinite_ajax_scroll.views.inc
+files[] = views_plugin_pager_ias.inc
